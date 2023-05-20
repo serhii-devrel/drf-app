@@ -18,9 +18,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from drf_app.views import BooksAPIView
+
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('api/', include('rest_framework.urls'))
+    path('api/v1', include('rest_framework.urls')),
+    path('api/v1/books', BooksAPIView.as_view()),
 ]
 
 if settings.DEBUG:
